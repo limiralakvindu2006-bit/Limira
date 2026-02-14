@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 body {
@@ -114,4 +114,5 @@ button {
 @keyframes beat {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
+    
 }

@@ -40,7 +40,7 @@ body {
   gap: 30px;
   justify-content: center;
   align-items: center;
-  min-height: 120px; /* Room for the Yes button to grow */
+  min-height: 120px;
 }
 
 button {
@@ -127,37 +127,36 @@ button {
   gap: 20px;
 }
 
-/* DESKTOP FIX: Responsive height to fit screen without scrolling */
 .media-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50vh; /* Scaled to viewport height */
+  height: 50vh;
   min-height: 300px;
   width: 100%;
   gap: 12px;
 }
 
 #photoRow {
-  display: contents; 
+  display: contents;
 }
 
 #photoRow img {
   height: 100%;
   flex: 1;
-  max-width: 18%; 
+  max-width: 18%;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-#videoRow { 
-  order: 3; 
-  flex: 1.6; 
-  height: 100%; 
+#videoRow {
+  order: 3;
+  flex: 1.6;
+  height: 100%;
   max-width: 32%;
-  object-fit: cover; 
-  border-radius: 12px; 
+  object-fit: cover;
+  border-radius: 12px;
   border: 2px solid #ff69b4;
 }
 
@@ -170,15 +169,28 @@ button {
 .letter-container {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
-  padding: 15px;
+  padding: 20px;
   border-radius: 18px;
   color: #ffe4e1;
-  font-family: 'Georgia', serif;
+  font-family: 'Times New Roman';
   font-size: clamp(16px, 2vw, 22px);
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: center;
   border: 1px solid rgba(255, 182, 193, 0.2);
   margin-bottom: 20px;
+}
+
+/* --- Letter Fade Effect --- */
+#letter {
+  white-space: pre-line;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+#letter.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* --- Airline Pop-up --- */
@@ -204,10 +216,10 @@ button {
   right: 0;
 }
 
-/* --- MOBILE RESPONSIVENESS (Preserved) --- */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
   .button-row { flex-direction: column; }
-  
+
   .media-row {
     flex-direction: column;
     height: auto;
@@ -246,4 +258,26 @@ button {
 @keyframes popIn {
   0% { transform: scale(0.5); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Rose Rain Effect --- */
+.rose-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 300; /* above memorial */
+}
+
+.rose {
+  position: absolute;
+  top: -40px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.8;
+  }
 }
